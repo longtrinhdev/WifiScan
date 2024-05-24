@@ -12,9 +12,10 @@ import com.example.androiddevwifiscan.R;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.WifiViewHolder> {
-    private ArrayList<OutData> lst;
+    private List<OutData> lst;
     @NonNull
     @Override
     public WifiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -65,6 +66,18 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.WifiViewHolder
             holder.txtMz.setText(Mz + ")");
         }
 
+        holder.txtGx.setText("(" + Gx);
+        holder.txtGy.setText(";  " + Gy);
+        holder.txtGz.setText(";  " + Gz + ")");
+
+        holder.txtAx.setText("(" + Ax + " ; ");
+        holder.txtAy.setText(Ay + " ; ");
+        holder.txtAz.setText(Az + ")");
+
+        holder.txtMx.setText("(" + Mx + " ; ");
+        holder.txtMy.setText(My + " ; ");
+        holder.txtMz.setText(Mz + ")");
+
     }
     @Override
     public int getItemCount() {
@@ -73,7 +86,7 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.WifiViewHolder
         }
         return 0;
     }
-    public void setData(ArrayList<OutData> myList) {
+    public void setData(List<OutData> myList) {
         this.lst = myList;
         notifyDataSetChanged();
     }

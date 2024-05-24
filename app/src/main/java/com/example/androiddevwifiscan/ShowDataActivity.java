@@ -84,7 +84,7 @@ public class ShowDataActivity extends AppCompatActivity implements SensorEventLi
 
     private RecyclerView rcvListWifi;
     private AppCompatButton btnContinue, btnThoat;
-    private ArrayList<OutData> myList;
+    private List<OutData> myList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -330,7 +330,7 @@ public class ShowDataActivity extends AppCompatActivity implements SensorEventLi
     }
 
     // hàm hiển thị kết quả người dùng
-    private ArrayList<OutData> displayWifiResults(List<ScanResult> scanResults) {
+    private List<OutData> displayWifiResults(List<ScanResult> scanResults) {
         String ssid = "";
         String bssid = "";
         String  level = "";
