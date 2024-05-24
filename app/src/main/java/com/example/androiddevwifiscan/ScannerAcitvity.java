@@ -72,6 +72,10 @@ public class ScannerAcitvity extends AppCompatActivity {
                     Toast.makeText(ScannerAcitvity.this,"Hãy nhập số lần quét",Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (Integer.parseInt(a) <= 0 ) {
+                    Toast.makeText(ScannerAcitvity.this, "Số lần quét phải lớn hơn 0", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (TextUtils.isEmpty(ox) || TextUtils.isEmpty(oy) || TextUtils.isEmpty(oz)) {
                     Toast.makeText(ScannerAcitvity.this,"Hãy nhập tọa độ điểm",Toast.LENGTH_SHORT).show();
                     return;
@@ -104,7 +108,7 @@ public class ScannerAcitvity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                finishAffinity();
             }
         });
 
