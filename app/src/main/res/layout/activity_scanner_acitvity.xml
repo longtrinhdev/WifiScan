@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScannerAcitvity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="1dp"
+                    android:text="Ứng dụng thu thập dữ liệu WiFi"
+                    android:textColor="#fafafa"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView5"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/imageView5"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.25" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/arc_2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/edt_nhap_so_lan_quet"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/custom_lan_quet"
+                    android:drawableStart="@drawable/custom_number"
+                    android:drawablePadding="16dp"
+                    android:hint="Số lần quét"
+                    android:inputType="numberSigned"
+                    android:padding="13dp"
+                    android:textColor="#32357A"
+
+                    android:textSize="21sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/edt_nhap_OX"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="54dp"
+                    android:background="@drawable/custom_lan_quet"
+                    android:drawableStart="@drawable/custom_gps"
+                    android:drawablePadding="16dp"
+                    android:hint="Ox"
+                    android:inputType="numberDecimal"
+                    android:padding="13dp"
+                    android:textColor="#32357A"
+                    android:textSize="21sp"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_nhap_so_lan_quet"
+                    app:layout_constraintStart_toStartOf="@+id/edt_nhap_so_lan_quet"
+                    app:layout_constraintTop_toBottomOf="@id/edt_nhap_so_lan_quet" />
+
+
+                <EditText
+                    android:id="@+id/edt_nhap_OY"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/custom_lan_quet"
+                    android:drawableStart="@drawable/custom_gps"
+                    android:drawablePadding="16dp"
+                    android:hint="Oy"
+                    android:inputType="numberDecimal"
+                    android:padding="13dp"
+                    android:textColor="#32357A"
+                    android:textSize="21sp"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_nhap_OX"
+                    app:layout_constraintStart_toStartOf="@+id/edt_nhap_OX"
+                    app:layout_constraintTop_toBottomOf="@id/edt_nhap_OX" />
+
+
+                <EditText
+                    android:id="@+id/edt_nhap_OZ"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/custom_lan_quet"
+                    android:drawableStart="@drawable/custom_gps"
+                    android:drawablePadding="16dp"
+                    android:hint="Oz"
+                    android:inputType="numberDecimal"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="21sp"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_nhap_OY"
+                    app:layout_constraintStart_toStartOf="@+id/edt_nhap_OY"
+                    app:layout_constraintTop_toBottomOf="@id/edt_nhap_OY" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/txtTenFile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="Appname"
+                        android:inputType="textMultiLine"
+                        android:textColor="#32357a"
+                        android:textSize="21sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="#32357a"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/txtTenFile"
+                        app:layout_constraintStart_toStartOf="@+id/txtTenFile"
+                        app:layout_constraintTop_toBottomOf="@id/txtTenFile" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_quet"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    style="@android:style/Widget.Button"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_btn"
+                    android:textSize="21sp"
+                    android:padding="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="#fafafa"
+                    android:drawableStart="@drawable/wifi_scanner"
+                    android:text="Quét wifi" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_back"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    style="@android:style/Widget.Button"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_btn"
+                    android:layout_marginStart="8dp"
+                    android:drawableStart="@drawable/log_out"
+                    android:padding="12dp"
+                    android:textSize="21sp"
+                    android:textColor="#fafafa"
+                    android:text="Thoát" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
