@@ -83,13 +83,13 @@ public class ScannerAcitvity extends AppCompatActivity {
                     new AlertDialog.Builder(ScannerAcitvity.this)
                             .setTitle("Cảnh Báo")
                             .setMessage("Bạn nên nhập số lần quét lớn hơn 25!")
-                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            .setPositiveButton("Tiếp Tục", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     onClickAlertDialogYes( a, nameFile);
                                 }
                             })
-                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            .setNegativeButton("Nhập lại", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     return;
