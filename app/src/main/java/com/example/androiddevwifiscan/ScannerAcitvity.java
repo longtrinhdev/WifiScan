@@ -221,5 +221,6 @@ public class ScannerAcitvity extends AppCompatActivity {
         edtNhapOx.setText("");
         edtNhapOy.setText("");
         edtNhapOz.setText("");
+        edtNhapOx.setFocusable(true);
     }
 }
