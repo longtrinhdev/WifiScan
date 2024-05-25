@@ -69,11 +69,9 @@
                     android:drawableStart="@drawable/custom_number"
                     android:drawablePadding="16dp"
                     android:hint="Số lần quét"
-
-                    android:inputType="numberSigned"
+                    android:inputType="number"
                     android:padding="13dp"
                     android:textColor="#32357A"
-
                     android:textSize="21sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +86,7 @@
                     android:drawableStart="@drawable/custom_gps"
                     android:drawablePadding="16dp"
                     android:hint="Ox"
-                    android:inputType="numberDecimal"
+                    android:inputType="numberDecimal|numberSigned"
                     android:padding="13dp"
                     android:textColor="#32357A"
                     android:textSize="21sp"
@@ -106,7 +104,7 @@
                     android:drawableStart="@drawable/custom_gps"
                     android:drawablePadding="16dp"
                     android:hint="Oy"
-                    android:inputType="numberDecimal"
+                    android:inputType="numberDecimal|numberSigned"
                     android:padding="13dp"
                     android:textColor="#32357A"
                     android:textSize="21sp"
@@ -124,7 +122,7 @@
                     android:drawableStart="@drawable/custom_gps"
                     android:drawablePadding="16dp"
                     android:hint="Oz"
-                    android:inputType="numberDecimal"
+                    android:inputType="number"
                     android:padding="12dp"
                     android:textColor="@color/black"
                     android:textSize="21sp"
@@ -178,8 +176,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -223,13 +219,10 @@
                     android:textColor="#fafafa"
                     android:text="Thoát" />
 
-
             </LinearLayout>
-
 
         </LinearLayout>
 
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

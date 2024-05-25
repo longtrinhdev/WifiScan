@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -22,9 +21,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.FileProvider;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 
 import java.io.File;
 
@@ -35,8 +32,6 @@ public class ScannerAcitvity extends AppCompatActivity {
 
     private LocationManager locationManager;
     private WifiManager wifiManager;
-    private Handler wifiScanHandler = new Handler();
-    private boolean isStart = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +95,11 @@ public class ScannerAcitvity extends AppCompatActivity {
                 }
                 if (TextUtils.isEmpty(ox) || TextUtils.isEmpty(oy) || TextUtils.isEmpty(oz)) {
                     Toast.makeText(ScannerAcitvity.this,"Hãy nhập tọa độ điểm",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (Integer.parseInt(a) > 1024) {
+                    Toast.makeText(ScannerAcitvity.this, "Số lần nhập quá lớn !",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
