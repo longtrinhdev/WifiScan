@@ -2,6 +2,7 @@ package com.example.androiddevwifiscan;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.LocationManager;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.FileProvider;
@@ -74,6 +76,26 @@ public class ScannerAcitvity extends AppCompatActivity {
                 }
                 if (Integer.parseInt(a) <= 0 ) {
                     Toast.makeText(ScannerAcitvity.this, "Số lần quét phải lớn hơn 0", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (Integer.parseInt(a) < 25) {
+
+                    new AlertDialog.Builder(ScannerAcitvity.this)
+                            .setTitle("Cảnh Báo")
+                            .setMessage("Bạn nên nhập số lần quét lớn hơn 25!")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    onClickAlertDialogYes( a, nameFile);
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    return;
+                                }
+                            })
+                            .create().show();
                     return;
                 }
                 if (TextUtils.isEmpty(ox) || TextUtils.isEmpty(oy) || TextUtils.isEmpty(oz)) {
@@ -222,5 +244,28 @@ public class ScannerAcitvity extends AppCompatActivity {
         edtNhapOy.setText("");
         edtNhapOz.setText("");
         edtNhapOx.setFocusable(true);
+    }
+
+    private void onClickAlertDialogYes(String a, String nameFile) {
+        if (isCheckInteger(a)) {
+            int n = Integer.parseInt(a);
+            float Ox = Float.parseFloat(edtNhapOx.getText().toString().trim());
+            float Oy = Float.parseFloat(edtNhapOy.getText().toString().trim());
+            float Oz = Float.parseFloat(edtNhapOz.getText().toString().trim());
+
+            Intent intent = new Intent(ScannerAcitvity.this, ShowDataActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("name",nameFile);
+            bundle.putInt("n",n);
+            bundle.putFloat("Ox",Ox);
+            bundle.putFloat("Oy",Oy);
+            bundle.putFloat("Oz",Oz);
+
+            intent.putExtra("data",bundle);
+            setEditText();
+            startActivity(intent);
+        }else {
+            Toast.makeText(ScannerAcitvity.this,"Nhập sô nguyên!",Toast.LENGTH_SHORT).show();
+        }
     }
 }
