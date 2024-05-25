@@ -36,6 +36,7 @@
                     android:textColor="#fafafa"
                     android:textSize="25sp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/noto_sans"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/imageView5"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -68,6 +69,7 @@
                     android:drawableStart="@drawable/custom_number"
                     android:drawablePadding="16dp"
                     android:hint="Số lần quét"
+
                     android:inputType="numberSigned"
                     android:padding="13dp"
                     android:textColor="#32357A"
@@ -153,6 +155,7 @@
                         android:layout_marginTop="8dp"
                         android:gravity="center"
                         android:text="Appname"
+                        android:fontFamily="@font/noto_sans"
                         android:inputType="textMultiLine"
                         android:textColor="#32357a"
                         android:textSize="21sp"
@@ -198,6 +201,8 @@
                     android:textSize="21sp"
                     android:padding="12dp"
                     android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/noto_sans"
+
                     android:textColor="#fafafa"
                     android:drawableStart="@drawable/wifi_scanner"
                     android:text="Quét wifi" />
@@ -212,6 +217,8 @@
                     android:layout_marginStart="8dp"
                     android:drawableStart="@drawable/log_out"
                     android:padding="12dp"
+                    android:fontFamily="@font/noto_sans"
+
                     android:textSize="21sp"
                     android:textColor="#fafafa"
                     android:text="Thoát" />
