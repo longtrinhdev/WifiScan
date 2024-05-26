@@ -78,7 +78,7 @@ public class ScannerAcitvity extends AppCompatActivity {
                     new AlertDialog.Builder(ScannerAcitvity.this)
                             .setTitle("Cảnh Báo")
                             .setMessage("Bạn nên nhập số lần quét lớn hơn 25!")
-                            .setPositiveButton("Tiếp Tục", new DialogInterface.OnClickListener() {
+                            .setPositiveButton("Tiếp tục", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     onClickAlertDialogYes( a, nameFile);
@@ -90,6 +90,21 @@ public class ScannerAcitvity extends AppCompatActivity {
                                     return;
                                 }
                             })
+                            .create().show();
+                    return;
+                }
+
+                if (Integer.parseInt(a) > 80) {
+                    new AlertDialog.Builder(ScannerAcitvity.this)
+                            .setTitle("Cảnh báo")
+                            .setMessage("Bạn nên nhập số lần nhấn nhỏ hơn hoặc bằng 80!")
+                            .setPositiveButton("Tiếp tục", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    onClickAlertDialogYes(a, nameFile);
+                                }
+                            })
+                            .setNegativeButton("Nhập lại",null)
                             .create().show();
                     return;
                 }
