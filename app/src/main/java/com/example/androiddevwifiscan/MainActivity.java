@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(MainActivity.this, ScannerAcitvity.class);
                 intent.putExtra("file",tenFile);
-                Toast.makeText(MainActivity.this,"Tạo file thành công!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Nhập tên file thành công!",Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });

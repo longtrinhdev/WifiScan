@@ -119,12 +119,7 @@ public class ShowDataActivity extends AppCompatActivity implements SensorEventLi
         // khởi tạo các thành phần hiển thị lên RecylerView
 
         // Hàm tiếp tục quét
-        btnContinue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkScanWifi();
-            }
-        });
+
         btnThoat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,6 +127,12 @@ public class ShowDataActivity extends AppCompatActivity implements SensorEventLi
             }
         });
 
+        btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkScanWifi();
+            }
+        });
     }
     // Hàm check
     private void checkScanWifi() {
