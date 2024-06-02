@@ -1,13 +1,17 @@
 package com.example.androiddevwifiscan;
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.hardware.SensorManager;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -20,6 +24,8 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 
@@ -32,6 +38,8 @@ public class ScannerAcitvity extends AppCompatActivity {
 
     private LocationManager locationManager;
     private WifiManager wifiManager;
+    private static final int MY_REQUEST_CODE = 123;
+    private SensorManager sensorManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +56,9 @@ public class ScannerAcitvity extends AppCompatActivity {
 
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        checkPermissions();
 
         btnQuetWifi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +77,7 @@ public class ScannerAcitvity extends AppCompatActivity {
                     return;
                 }
                 if (TextUtils.isEmpty(a)) {
-                    Toast.makeText(ScannerAcitvity.this,"Hãy nhập số lần quét",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ScannerAcitvity.this,"Hãy nhập số lần quét!",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (Integer.parseInt(a) <= 0 ) {
@@ -84,7 +95,7 @@ public class ScannerAcitvity extends AppCompatActivity {
                                     onClickAlertDialogYes( a, nameFile);
                                 }
                             })
-                            .setNegativeButton("Nhập lại", new DialogInterface.OnClickListener() {
+                            .setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     return;
@@ -104,40 +115,21 @@ public class ScannerAcitvity extends AppCompatActivity {
                                     onClickAlertDialogYes(a, nameFile);
                                 }
                             })
-                            .setNegativeButton("Nhập lại",null)
+                            .setNegativeButton("Quay lại",null)
                             .create().show();
                     return;
                 }
                 if (TextUtils.isEmpty(ox) || TextUtils.isEmpty(oy) || TextUtils.isEmpty(oz)) {
-                    Toast.makeText(ScannerAcitvity.this,"Hãy nhập tọa độ điểm",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ScannerAcitvity.this,"Hãy nhập tọa độ điểm !",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (Integer.parseInt(a) > 1024) {
-                    Toast.makeText(ScannerAcitvity.this, "Số lần nhập quá lớn !",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ScannerAcitvity.this, "Số lần quét quá lớn !",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (isCheckInteger(a)) {
-                    int n = Integer.parseInt(a);
-                    float Ox = Float.parseFloat(edtNhapOx.getText().toString().trim());
-                    float Oy = Float.parseFloat(edtNhapOy.getText().toString().trim());
-                    float Oz = Float.parseFloat(edtNhapOz.getText().toString().trim());
-
-                    Intent intent = new Intent(ScannerAcitvity.this, ShowDataActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("name",nameFile);
-                    bundle.putInt("n",n);
-                    bundle.putFloat("Ox",Ox);
-                    bundle.putFloat("Oy",Oy);
-                    bundle.putFloat("Oz",Oz);
-
-                    intent.putExtra("data",bundle);
-                    setEditText();
-                    startActivity(intent);
-                }else {
-                    Toast.makeText(ScannerAcitvity.this,"Nhập sô nguyên!",Toast.LENGTH_SHORT).show();
-                }
+                onClickAlertDialogYes(a, nameFile);
             }
         });
 
@@ -233,7 +225,7 @@ public class ScannerAcitvity extends AppCompatActivity {
             }
         } else {
             // Xử lý nếu tệp không tồn tại trong thư mục download
-            Toast.makeText(this, "File not found in Downloads folder", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "File chưa được tạo", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -280,7 +272,25 @@ public class ScannerAcitvity extends AppCompatActivity {
             setEditText();
             startActivity(intent);
         }else {
-            Toast.makeText(ScannerAcitvity.this,"Nhập sô nguyên!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(ScannerAcitvity.this,"Nhập số nguyên!",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void checkPermissions() {
+
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
+            int permission1 = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION);
+
+
+            if (permission1 != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{
+                                android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                                android.Manifest.permission.ACCESS_FINE_LOCATION,
+                                android.Manifest.permission.ACCESS_WIFI_STATE,
+                                android.Manifest.permission.ACCESS_NETWORK_STATE},
+                        MY_REQUEST_CODE);
+            }
+        }
+
     }
 }

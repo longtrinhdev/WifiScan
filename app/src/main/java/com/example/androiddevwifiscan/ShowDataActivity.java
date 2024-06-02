@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -21,15 +20,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import android.Manifest;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,9 +42,7 @@ import java.util.Locale;
 
 public class ShowDataActivity extends AppCompatActivity implements SensorEventListener {
 
-    private static final String LOG_TAG = "Vtwo";
-    private static final int MY_REQUEST_CODE = 123;
-    private static final int REQUEST_WRITE_EXTERNAL_STORAGE = 1;
+    private static final String LOG_TAG = "androidDev";
     //private static final String FILE_HEADER = "ScanNumber,TimeStamp,SSID,BSSID,Level,gyroX,gyroY,gyroZ,accX,accY,accZ,magneticX,magneticY,magneticZ,Ox,Oy,Oz";
     private static final String FILE_HEADER = "ScanNumber,TimeStamp,SSID,BSSID,Level,Ox,Oy,Oz";
     private static final String NEW_LINE_SEPARATOR = "\n";
@@ -62,7 +53,6 @@ public class ShowDataActivity extends AppCompatActivity implements SensorEventLi
     private LocationManager locationManager;
     private SensorManager sensorManager;
     private Sensor magnetometerSensor;
-    private Sensor pressureSensor;
     private Sensor gyroSensor;
     private Sensor accSensor;
 
@@ -113,11 +103,9 @@ public class ShowDataActivity extends AppCompatActivity implements SensorEventLi
 
         // hàm check quyền truy cập wifi
         checkPermissions();
-
         checkScanWifi();
 
         // khởi tạo các thành phần hiển thị lên RecylerView
-
         // Hàm tiếp tục quét
 
         btnThoat.setOnClickListener(new View.OnClickListener() {
@@ -370,20 +358,6 @@ public class ShowDataActivity extends AppCompatActivity implements SensorEventLi
 
     // 1.5.2 Hàm check quyền wifi
     private void checkPermissions() {
-        int permission1 = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-
-        if (permission1 != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{
-                            Manifest.permission.ACCESS_COARSE_LOCATION,
-                            Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_WIFI_STATE,
-                            Manifest.permission.ACCESS_NETWORK_STATE},
-                    MY_REQUEST_CODE);
-        }
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_EXTERNAL_STORAGE);
-        }
-
         if (magnetometerSensor != null) {
             sensorManager.registerListener((SensorEventListener) this, magnetometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
             Log.d(LOG_TAG, "Thiết bị hỗ trợ cảm biến từ trường");
